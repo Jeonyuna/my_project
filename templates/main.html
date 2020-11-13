@@ -1,10 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="no">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="author" content="HRD">
+        <meta name="robots" content="all">
+        <meta name="keywords" content="HRD">
+        <meta name="description" content="한국고용정보원">
+        <!-- Webpage Title -->
+        <title>HRD-Net 파헤치기</title>
+        <!-- 구글폰트 -->
+        <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <style type="text/css">
+            {#text-align: center;#}
+            .ct-btn {
+                text-align: center;
+            {#display: inline-block;#}{#margin: 5px 0;#}{#padding: .5em .75em;#}{#border-radius: .25em;#}{#box-sizing: content-box;#}{#-moz-box-sizing: content-box;#}{#background: transparent;#}{#outline: 0;#}{#vertical-align: middle;#}{#font-family: inherit;#}{#font-size: 18px;#}{#text-decoration: none;#}{#white-space: nowrap;#}{#cursor: pointer#}
+            }
+
+
+            .tit {
+                text-align: center;
+                font-family: 'Stylish', sans-serif;
+                font-size: 40px;
+            }
+
+            .form1 create_list_url mt20 {
+                text-align: center;
+            }
+
+            .date_wrapper {
+                display: flex;
+            }
+
+            .date {
+                width: 50%;
+            }
+
+        </style>
+
+        <script>
+            function searchButtonClicked() {
+                let target = $('#target-training > input[type="radio"]:checked').val();
+                console.log(target);
+                let classify = $('#traingMthCdLi > input[type="radio"]:checked').val();
+                console.log(classify);
+                let academy = $('#srchTraOrganNm').val();
+                console.log(academy);
+                let course = $('#srchTraProcessNm').val();
+                console.log(course);
+                let startDate = $('#start').val().replaceAll('-','');
+                console.log(startDate);
+
+                location.href = `/search?target=${target}&{classify}&{academy}&{course}&{startDate}`
+            }
+        </script>
     </head>
+    >
     <body>
+        <div class="form1 create_list_url mt20">
+            <div class="search_box type1 stype1"><!-- 웹접근성 개선 180430 수정 : stype1 추가 -->
+                <p class="tit"><span>HRD-Net 파헤치기</span></p>
+            </div>
+
+            <fieldset>
+                <legend>훈련과정검색</legend>
+                <ul>
+                    <li id="gubunLi">
+                        <strong>훈련대상</strong>
+                        <div id="target-training">
+                            <input type="radio" id="gubun1" name="gubun" value="gubun1" checked="checked">
+                            <label for="gubun1">구직자</label>
+                            <input type="radio" id="gubun2" name="gubun" value="gubun2">
+                            <label for="gubun2">근로자</label>
+                            <input type="radio" id="gubun3" name="gubun" value="gubun3">
+                            <label for="gubun3">기업</label>
+                        </div>
+                    </li>
+                    <P></P>
+
+                    <li id="traingMthCdLi">
+                        <strong>훈련구분</strong>
+                        <div>
+										<span class="traingMth traingMthCd01" style="display: inline;">
+											<input type="radio" id="traingMthCd1" name="traingMthCd" value="A">
+											<label for="traingMthCd1">전체</label>
+										</span>
+                            <span class="traingMth traingMthCd02">
+											<input type="radio" id="traingMthCd2" name="traingMthCd" value="M1005"
+                                                   checked="checked">
+											<label for="traingMthCd2">인터넷</label>
+
+										</span>
+                            <span class="traingMth traingMthCd03" style="display: inline;">
+											<input type="radio" id="traingMthCd3" name="traingMthCd" value="M1004">
+											<label for="traingMthCd3">우편</label>
+
+										</span>
+                            <span class="traingMth traingMthCd04" style="display: inline;">
+											<input type="radio" id="traingMthCd4" name="traingMthCd" value="M1011">
+											<label for="traingMthCd4">스마트</label>
+
+										</span>
+                        </div>
+                    </li>
+                    <P></P>
+
+
+                    <li>
+                        <strong><label for="srchTraOrganNm">훈련기관</label></strong>
+                        <div>
+                            <input type="text" class="w100p" id="srchTraOrganNm" name="srchTraOrganNm">
+                        </div>
+                    </li>
+                    <P></P>
+
+                    <li>
+                        <strong><label for="srchTraProcessNm">훈련과정</label></strong>
+                        <div>
+                            <input type="text" class="w100p" id="srchTraProcessNm" name="srchTraProcessNm">
+                        </div>
+                    </li>
+                    <P></P>
+
+
+                    <li>
+                        <strong>개강일자</strong>
+                        <!-- 웹접근성 개선 180430 수정 : 직접입력 입력 포맷 안내 문구 -->
+                        <div class="date_wrapper">
+
+                            <div class="date">
+                                <label for="start">Start date:</label>
+                                <input type="date" id="start" name="trip-start"
+                                       value="2020-01-01"
+                                       min="2020-01-01" max="2030-12-31">
+                            </div>
+                            <div class="date">
+                                <label for="start">End date:</label>
+                                <input type="date" id="start" name="trip-start"
+                                       value="2020-01-01"
+                                       min="2020-01-01" max="2030-12-31">
+                            </div>
+
+
+                        </div>
+                    </li>
+                    <P></P>
+                </ul>
+                <div class="ct-btn">
+                    <button onclick="searchButtonClicked()">검색하기</button>
+                </div>
+
+            </fieldset>
+
+        </div>
 
     </body>
 </html>
