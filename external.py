@@ -29,12 +29,15 @@ def get_data_from_api(target, start_date, end_date, course=None, classify=None, 
         "sortCol": "TOT_FXNUM"
     }
 
+
+    print(params)
+
     xml_data = requests.get(url_dict[target], params).text
 
     jsonString = json.dumps(xmltodict.parse(xml_data), indent=2)
 
     json_data = json.loads(jsonString)
-    print(json_data)
+    print(json_data, "YOOOOO")
     return json_data["HRDNet"]["srchList"]["scn_list"]
 
 

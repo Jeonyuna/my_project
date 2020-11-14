@@ -8,6 +8,7 @@ app = Flask(__name__)
 def get_main():
     return render_template('main.html')
 
+
 @app.route('/search', methods=['GET'])
 def search_get():
     target = request.args.get("target")
@@ -42,5 +43,6 @@ def search_get():
 
     return render_template('result.html', result_ls=result_ls)
 
+print("HERE!!!!")
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
