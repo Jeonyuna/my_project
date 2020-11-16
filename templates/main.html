@@ -23,7 +23,7 @@
             {#text-align: center;#}
             .ct-btn {
                 text-align: center;
-            {#display: inline-block;#}{#margin: 5px 0;#}{#padding: .5em .75em;#}{#border-radius: .25em;#}{#box-sizing: content-box;#}{#-moz-box-sizing: content-box;#}{#background: transparent;#}{#outline: 0;#}{#vertical-align: middle;#}{#font-family: inherit;#}{#font-size: 18px;#}{#text-decoration: none;#}{#white-space: nowrap;#}{#cursor: pointer#}
+
             }
 
 
@@ -62,7 +62,7 @@
                 let endDate = $('#end').val().replaceAll('-', '');
                 console.log(endDate);
 
-                location.href = `/search?target=${target}&classify=${classify}&academy=${academy}&course=${course}&startDate=${startDate}&endDate=${endDate}`;
+                location.href = `/search?page=1&target=${target}&classify=${classify}&academy=${academy}&course=${course}&startDate=${startDate}&endDate=${endDate}`;
             }
         </script>
     </head>
@@ -131,13 +131,13 @@
                             <div class="date">
                                 <label for="start">Start date:</label>
                                 <input type="date" id="start" name="trip-start"
-                                       value="2020-01-01"
+                                       value="today"
                                        min="2020-01-01" max="2030-12-31">
                             </div>
                             <div class="date">
                                 <label for="end">End date:</label>
                                 <input type="date" id="end" name="trip-end"
-                                       value="2020-01-01"
+                                       value="today"
                                        min="2020-01-01" max="2030-12-31">
                             </div>
 

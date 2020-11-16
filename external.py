@@ -13,12 +13,12 @@ url_dict = {
 }
 
 # course & academy & classify are optional
-def get_data_from_api(target, start_date, end_date, course=None, classify=None, academy=None):
+def get_data_from_api(target, start_date, end_date, page, course=None, classify=None, academy=None):
     params = {
         "authKey": API_KEY,
         "returnType": 'XML',
         "outType": 1,
-        "pageNum": 1,
+        "pageNum": page,
         "pageSize": 100,
         "srchTraGbn": classify,
         "srchTraStDt": start_date,
@@ -32,7 +32,10 @@ def get_data_from_api(target, start_date, end_date, course=None, classify=None, 
 
     print(params)
 
-    xml_data = requests.get(url_dict[target], params).text
+    get_request = requests.get(url_dict[target], params)
+
+    print(get_request.request.url)
+    xml_data = get_request.text
 
     jsonString = json.dumps(xmltodict.parse(xml_data), indent=2)
 

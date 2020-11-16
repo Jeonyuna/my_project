@@ -21,18 +21,26 @@
     </head>
     <script>
         $(document).ready(function () {
-            let results = {{ result_ls }};
-            console.log(results);
-            $(document).body.append(results)
+
         })
+
+        function nextButtonClicked() {
+            let current = location.href;
+            let currentPage = parseInt('{{ page }}');
+            let regexed = current.replace('page=[0-9]+', `page=${currentPage + 1}`)
+            console.log(current);
+            console.log(regexed);
+            location.href = regexed;
+        }
     </script>
     <body>
+        <button type="button" onclick="nextButtonClicked()">다음</button>
         <div class="form1 create_list_url mt20">
             <div class="search_box type1 stype1"><!-- 웹접근성 개선 180430 수정 : stype1 추가 -->
                 <p class="tit"><span>HRD-Net 결과보기</span></p>
             </div>
-            <table border="1" width="50%" height=100 bgcolor=#11a9c1 bordercolor="white" cellspacing="4" align="center">
-                <tr align="center" bgcolor="white">
+            <table border="1" width="50%" height=100 bgcolor=#87ceeb bordercolor="white" cellspacing="4" align="center">
+                <tr align="center" bgcolor="#87ceeb">
                     <td>순위</td>
                     <td>기관명</td>
                     <td>과정명</td>

@@ -17,8 +17,12 @@ def search_get():
     course = request.args.get("course")
     start_date = request.args.get("startDate")
     end_date = request.args.get("endDate")
+    page = request.args.get('page')
 
-    result = get_data_from_api(target, start_date, end_date, course, classify, academy)
+    if page is None:
+        page = 1
+
+    result = get_data_from_api(target, start_date, end_date, page, course, classify, academy)
     result_ls = []
     for course in result:
 
@@ -46,7 +50,7 @@ def search_get():
     for i in range(len(result_ls)):
         result_ls[i]['ranking'] = i + 1
 
-    return render_template('result.html', result_ls=result_ls)
+    return render_template('result.html', result_ls=result_ls, page=page)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
