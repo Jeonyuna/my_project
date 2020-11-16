@@ -51,7 +51,7 @@
             function searchButtonClicked() {
                 let target = $('#target-training > input[type="radio"]:checked').val();
                 console.log(target);
-                let classify = $('#traingMthCdLi > input[type="radio"]:checked').val();
+                let classify = $('#traingMthCdLiDiv > input[type="radio"]:checked').val();
                 console.log(classify);
                 let academy = $('#srchTraOrganNm').val();
                 console.log(academy);
@@ -62,11 +62,7 @@
                 let endDate = $('#end').val().replaceAll('-', '');
                 console.log(endDate);
 
-
-
-
-                location.href = `/search?target=gubun3&classify=traingMthCd2&academy=휴넷&course=엑셀&start_date=20200101&end_date=20201105`
-
+                location.href = `/search?target=${target}&classify=${classify}&academy=${academy}&course=${course}&startDate=${startDate}&endDate=${endDate}`;
             }
         </script>
     </head>
@@ -95,27 +91,16 @@
 
                     <li id="traingMthCdLi">
                         <strong>훈련구분</strong>
-                        <div>
-										<span class="traingMth traingMthCd01" style="display: inline;">
-											<input type="radio" id="traingMthCd1" name="traingMthCd" value="A">
-											<label for="traingMthCd1">전체</label>
-										</span>
-                            <span class="traingMth traingMthCd02">
-											<input type="radio" id="traingMthCd2" name="traingMthCd" value="M1005"
-                                                   checked="checked">
-											<label for="traingMthCd2">인터넷</label>
-
-										</span>
-                            <span class="traingMth traingMthCd03" style="display: inline;">
-											<input type="radio" id="traingMthCd3" name="traingMthCd" value="M1004">
-											<label for="traingMthCd3">우편</label>
-
-										</span>
-                            <span class="traingMth traingMthCd04" style="display: inline;">
-											<input type="radio" id="traingMthCd4" name="traingMthCd" value="M1011">
-											<label for="traingMthCd4">스마트</label>
-
-										</span>
+                        <div id="traingMthCdLiDiv">
+                            <input type="radio" id="traingMthCd1" name="traingMthCd" value="A">
+                            <label for="traingMthCd1">전체</label>
+                            <input type="radio" id="traingMthCd2" name="traingMthCd" value="M1005"
+                                   checked="checked">
+                            <label for="traingMthCd2">인터넷</label>
+                            <input type="radio" id="traingMthCd3" name="traingMthCd" value="M1004">
+                            <label for="traingMthCd3">우편</label>
+                            <input type="radio" id="traingMthCd4" name="traingMthCd" value="M1011">
+                            <label for="traingMthCd4">스마트</label>
                         </div>
                     </li>
                     <P></P>

@@ -38,7 +38,11 @@ def get_data_from_api(target, start_date, end_date, course=None, classify=None, 
 
     json_data = json.loads(jsonString)
     print(json_data, "YOOOOO")
-    return json_data["HRDNet"]["srchList"]["scn_list"]
+
+    try:
+        return json_data["HRDNet"]["srchList"]["scn_list"]
+    except:
+        return []
 
 
 # result = get_data_from_api('20201101', '20201109')
